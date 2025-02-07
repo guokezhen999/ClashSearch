@@ -1,13 +1,14 @@
 import asyncio
 import datetime
 
+import coc
 from PyQt6.QtWidgets import QMainWindow, QMessageBox
 from qasync import QEventLoop, asyncSlot
 
 from UI.MainGUI import Ui_MainWindow
 
 from LocalClasses.LocalPlayer import playersToLocal
-from LocalClasses.LocalWarLog import warLogsToLocal
+from LocalClasses.LocalWarLog import warLogsToLocal, LocalWarLog
 from Accounts.ClashDatabase import ClashDatabase
 from Accounts.ClashAccount import ClashAccount
 from BasicData.SelectMode import PlayerType
@@ -112,24 +113,72 @@ class ClashSearch(QMainWindow, Ui_MainWindow):
         dialog.exec()
 
     # 通过账号查询
-    async def login(self) -> None:
-        await self.account.login()
-
-    async def logout(self) -> None:
-        await self.account.close()
-
-    @asyncSlot()
-    async def updatePlayers(self, type: PlayerType, about: bool = True):
+    async def getCurrentPlayersInfo(self, type: PlayerType, account: ClashAccount):
         localPlayers = self.database.getPlayersAll(type)
         tags = [player.getInfo("Tag") for player in localPlayers]
-        print(tags)
-        # 进行查询
-        account = ClashAccount()
-        await account.login()
-        players = await account.searchPlayers(tags)
-        await account.close()
+        print(f"正在查询玩家{type}：", tags)
+        players = []
+        try:
+            players = await account.searchPlayers(tags)
+            print(f"查询玩家{type}成功：", players)
+        except Exception as _:
+            print(f"查询玩家{type}失败！")
+        return players
 
-        print(players)
+    async def getCurrentClansInfo(self, account: ClashAccount):
+        localClans = self.database.getClansAll()
+        clanTags = [clan.getInfo("Tag") for clan in localClans]
+
+        clans = []
+        clanPlayers = []
+
+        # 查询部落
+        print("正在查询部落：", clanTags)
+        try:
+            clans = await account.searchClans(clanTags)
+            print("查询部落成功：", clans)
+        except Exception as _:
+            print("查询部落失败！")
+
+        playerTags = []
+        publicClanTags = []
+        for clan in clans:
+            playerTags += list(clan.members_dict.keys())
+            if clan.public_war_log:
+                publicClanTags.append(clan.tag)
+
+        # 查询部落成员
+        print("正在查询部落成员：", playerTags)
+        try:
+            clanPlayers = await account.searchPlayers(playerTags)
+            print(f"查询部落成员成功：", clanPlayers)
+        except Exception as _:
+            print(f"查询部落成员失败！")
+
+        # 查询部落战日志
+        warLogs = {}
+        limits = self.getWarLogSearchLimit(publicClanTags)
+        print("部落战记录查询场数：", limits)
+        for tag in publicClanTags:
+            logDatas = {}
+            try:
+                warLog = await account.searchWarLog(tag, limits[tag])
+                logDatas = warLog._init_logs
+            except Exception as _:
+                print(f"查询部落{tag}对战记录失败！")
+            logs = []
+            for data in logDatas:
+                try:
+                    if data['attacksPerMember'] == 2:
+                        logs.append(data)
+                except Exception as _:
+                    print("无此项信息")
+            localLogDatas = warLogsToLocal(logs)
+            warLogs[tag] = localLogDatas
+
+        return clans, clanPlayers, warLogs
+
+    def showPlayers(self, type: PlayerType, players: list[coc.Player]):
         self.database.updatePlayers(players, type)
         self.database.createPlayerDailyTable(type)
         self.database.updatePlayerDailyTable(players, type)
@@ -137,51 +186,17 @@ class ClashSearch(QMainWindow, Ui_MainWindow):
         if type == PlayerType.MY_PLAYER:
             self.showMyPlayersTable.resetPlayers(localPlayersNew)
             self.showMyPlayersTable.show()
+            QMessageBox.about(self, "更新", "更新我的玩家成功！")
         elif type == PlayerType.ROBOT:
             self.showRobotTable.resetPlayers(localPlayersNew)
             self.showRobotTable.show()
+            QMessageBox.about(self, "更新", "更新机器人成功！")
         elif type == PlayerType.FOCUS_PLAYER:
             self.showFocusPlayerTable.resetPlayers(localPlayersNew)
             self.showFocusPlayerTable.show()
-        if about:
-            QMessageBox.about(self, "更新玩家", "数据更新成功！")
-        # except Exception as _:
-        #     QMessageBox.about(self, "更新我的玩家", "数据更新失败！")
+            QMessageBox.about(self, "更新", "更新关注玩家成功！")
 
-    @asyncSlot()
-    async def updateClans(self, about: bool = True):
-        account = ClashAccount()
-        localClans = self.database.getClansAll()
-        tags = [clan.getInfo("Tag") for clan in localClans]
-        print(tags)
-        # try:
-        await account.login()
-        clans = await account.searchClans(tags)
-        playerTags = []
-        publicClanTags = []
-        for clan in clans:
-            playerTags += list(clan.members_dict.keys())
-            if clan.public_war_log:
-                publicClanTags.append(clan.tag)
-        players = await account.searchPlayers(playerTags)
-        # 部落战日志
-        warLogs = {}
-        limits = self.getWarLogSearchLimit(publicClanTags)
-        print(limits)
-        for tag in publicClanTags:
-            warLog = await account.searchWarLog(tag, limits[tag])
-            logDatas = warLog._init_logs
-            logs = []
-            for data in logDatas:
-                print(data)
-                try:
-                    if data['attacksPerMember'] == 2:
-                        logs.append(data)
-                except Exception as _:
-                    print("无信息")
-            localLogDatas = warLogsToLocal(logs)
-            warLogs[tag] = localLogDatas
-        await account.close()
+    def showClans(self, clans: list[coc.Clan], players: list[coc.Player], warLogs: dict[str, list[LocalWarLog]]):
         self.database.updateClans(clans)
         self.database.updateClanPlayers(players)
         self.database.createClanDailyTable()
@@ -190,10 +205,21 @@ class ClashSearch(QMainWindow, Ui_MainWindow):
         localClansNew = self.database.getClansAll()
         self.showClanTable.resetClans(localClansNew)
         self.showClanTable.show()
-        if about:
-            QMessageBox.about(self, "更新关注部落", "数据更新成功！")
-        # except Exception as _:
-        #     QMessageBox.about(self, "更新关注部落", "数据更新失败！")
+        QMessageBox.about(self, "更新关注部落", "数据更新成功！")
+
+    @asyncSlot()
+    async def updatePlayers(self, type: PlayerType):
+        account = ClashAccount()
+        await account.login()
+        players = await self.getCurrentPlayersInfo(type, account)
+        self.showPlayers(type, players)
+
+    @asyncSlot()
+    async def updateClans(self):
+        account = ClashAccount()
+        await account.login()
+        clans, players, warLogs = await self.getCurrentClansInfo(account)
+        self.showClans(clans, players, warLogs)
 
     def selectPlayerItems(self, showPlayerTable: ShowPlayerTable):
         dialog = SelectPlayerItemsDialog(showPlayerTable)
@@ -273,9 +299,9 @@ class ClashSearch(QMainWindow, Ui_MainWindow):
         if update:
             # try:
             print("自动更新中")
-            await self.updatePlayers(PlayerType.MY_PLAYER, True)
-            await self.updatePlayers(PlayerType.FOCUS_PLAYER, True)
-            await self.updatePlayers(PlayerType.ROBOT, True)
+            await self.updatePlayers(PlayerType.MY_PLAYER)
+            await self.updatePlayers(PlayerType.FOCUS_PLAYER)
+            await self.updatePlayers(PlayerType.ROBOT)
             await self.updateClans(True)
             with open('Accounts/databaseFiles/lastUpdate.txt', 'w') as fp:
                 fp.write(currentTime.strftime('%Y-%m-%d %H:%M:%S'))

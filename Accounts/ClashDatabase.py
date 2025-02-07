@@ -95,7 +95,6 @@ class ClashDatabase(DatabaseInfo):
         values.append(playerDict["initTag"])
         table = self.getPlayerTable(type)
         sql = f"UPDATE {table} SET {sqlKeys} WHERE tag = %s"
-        print(sql, values)
         self.cursor.execute(sql, values)
         self.connection.commit()
 
@@ -118,7 +117,6 @@ class ClashDatabase(DatabaseInfo):
             achievementsSql += f"{key.lower().replace(' ', '_').replace('!', '').replace('-', '_')}, "
         achievementsSql = achievementsSql[:-2]
         sql = f"SELECT {infoSql} {armySql} {achievementsSql} FROM {table} ORDER BY id ASC"
-        print(sql)
         self.cursor.execute(sql)
         results = self.cursor.fetchall()
         players = []
@@ -171,7 +169,6 @@ class ClashDatabase(DatabaseInfo):
             achievementsSql += f"{key.lower().replace(' ', '_').replace('!', '').replace('-', '_')}, "
         achievementsSql = achievementsSql[:-2]
         sql = f"SELECT {infoSql} {armySql} {achievementsSql} FROM {self.clanPlayers} WHERE clan_tag = '{clanTag}' ORDER BY id ASC"
-        print(sql)
         self.cursor.execute(sql)
         results = self.cursor.fetchall()
         players = []
@@ -319,7 +316,6 @@ class ClashDatabase(DatabaseInfo):
                 if player.get_achievement(name) is not None:
                     achievementValues.append(player.get_achievement(name).value)
                 else:
-                    print(name)
                     achievementValues.append(0)
 
             infoValues = [
@@ -331,7 +327,6 @@ class ClashDatabase(DatabaseInfo):
             ]
             values = infoValues + heroLevels + troopLevels + spellLevels + petLevels + equipmentLevels \
                      + builderHeroLevels + builderTroopLevels + achievementValues + [player.tag]
-            print(sql, values)
             self.cursor.execute(sql, values)
         self.connection.commit()
         # 保存部落图标
@@ -375,7 +370,6 @@ class ClashDatabase(DatabaseInfo):
         valueSql = valueSql[:-2]
         valueSql += ")"
         sql = f"INSERT INTO {self.clanPlayers} {itemSql} {valueSql} ON DUPLICATE KEY UPDATE {dupliacateSql}"
-        print(sql)
         for player in players:
             values = []
             for name in infos:
@@ -474,7 +468,6 @@ class ClashDatabase(DatabaseInfo):
             name = name.replace(' ', '_').replace('.', '').lower()
             sql += f" {name} INT UNSIGNED, "
         sql = sql[:-2] + ")"
-        print(sql)
         self.cursor.execute(sql)
         self.connection.commit()
 
@@ -528,7 +521,6 @@ class ClashDatabase(DatabaseInfo):
         valueSql = valueSql[:-2]
         valueSql += ")"
         sql = f"INSERT INTO {table} {itemSql} {valueSql} ON DUPLICATE KEY UPDATE {dupliacateSql}"
-        print(sql)
         for player in players:
             values = []
             for name in infos:
@@ -549,7 +541,6 @@ class ClashDatabase(DatabaseInfo):
                 values.append(player.getTroopBuilder(name))
             for name in achievements:
                 values.append(player.getAchievement(name))
-            print(values)
             self.cursor.execute(sql, values)
         self.connection.commit()
 
@@ -618,7 +609,6 @@ class ClashDatabase(DatabaseInfo):
             infoList = []
             for date, table in zip(dates, tables):
                 sql = f"SELECT {infoSql} FROM {table} WHERE tag = %s"
-                print(sql)
                 if self.cursor.execute(sql, tag) == 1:
                     results = self.cursor.fetchall()
                     infoList.append([date] + list(results[0]))
@@ -644,14 +634,12 @@ class ClashDatabase(DatabaseInfo):
                              f"values({info.replace(' ', '_').replace('.', '').lower()}), "
         dupliacateSql = dupliacateSql[:-2]
         sql = f"INSERT INTO {self.warLog} {itemSql} {valueSql} ON DUPLICATE KEY UPDATE {dupliacateSql}"
-        print(sql)
         for clanTag in clanTags:
             logs = warLogs[clanTag]
             for log in logs:
                 values = []
                 for info in Items.warLogInfos:
                     values.append(log.getInfo(info))
-                print(values)
                 self.cursor.execute(sql, values)
         self.connection.commit()
 
