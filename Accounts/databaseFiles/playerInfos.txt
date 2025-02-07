@@ -1,0 +1,52 @@
+id INT UNSIGNED AUTO_INCREMENT UNIQUE KEY
+name VARCHAR(100)
+tag VARCHAR(20) PRIMARY KEY
+exp_level SMALLINT UNSIGNED
+town_hall SMALLINT UNSIGNED
+town_hall_weapon SMALLINT UNSIGNED
+builder_hall SMALLINT UNSIGNED
+clan VARCHAR(100)
+clan_tag VARCHAR(20)
+role VARCHAR(20)
+war_stars INT UNSIGNED
+trophies INT UNSIGNED
+best_trophies INT UNSIGNED
+legend_trophies INT UNSIGNED
+builder_base_trophies INT UNSIGNED
+best_builder_base_trophies INT UNSIGNED
+donations INT UNSIGNED
+received INT UNSIGNED
+attack_wins INT UNSIGNED
+defense_wins INT UNSIGNED
+capital_gold INT UNSIGNED
+home_heroes_level_sum SMALLINT UNSIGNED
+builder_heroes_level_sum SMALLINT UNSIGNED
+gold_grab INT UNSIGNED
+elixir_escapade INT UNSIGNED
+heroic_heist INT UNSIGNED
+well_seasoned INT UNSIGNED
+nice_and_tidy INT UNSIGNED
+clan_war_wealth INT UNSIGNED
+friend_in_need INT UNSIGNED
+sharing_is_caring INT UNSIGNED
+siege_sharer INT UNSIGNED
+war_league_legend INT UNSIGNED
+games_champion INT UNSIGNED
+unbreakable INT UNSIGNED
+conqueror INT UNSIGNED
+humiliator INT UNSIGNED
+not_so_easy_this_time INT UNSIGNED
+union_buster INT UNSIGNED
+bust_this INT UNSIGNED
+wall_buster INT UNSIGNED
+mortar_mauler INT UNSIGNED
+x_bow_exterminator INT UNSIGNED
+firefighter INT UNSIGNED
+anti_artillery INT UNSIGNED
+shattered_and_scattered INT UNSIGNED
+counterspell INT UNSIGNED
+monolith_masher INT UNSIGNED
+superb_work INT UNSIGNED
+get_even_more_goblins INT UNSIGNED
+un_build_it INT UNSIGNED
+aggressive_capitalism INT UNSIGNED

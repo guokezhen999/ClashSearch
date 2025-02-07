@@ -1,0 +1,22 @@
+id INT UNSIGNED AUTO_INCREMENT UNIQUE KEY
+name VARCHAR(100)
+tag VARCHAR(20) PRIMARY KEY
+level INT UNSIGNED
+member_count INT UNSIGNED
+war_league VARCHAR(100)
+points INT UNSIGNED
+builder_base_points INT UNSIGNED
+capital_peak_level INT UNSIGNED
+capital_points INT UNSIGNED
+war_frequency VARCHAR(100)
+war_wins INT UNSIGNED
+war_losses INT
+war_ties INT
+war_win_streak INT UNSIGNED
+location VARCHAR(100)
+type VARCHAR(100)
+required_trophies INT UNSIGNED
+required_builder_base_trophies INT UNSIGNED
+required_townhall INT UNSIGNED
+public_war_log BOOLEAN
+description VARCHAR(1000)
