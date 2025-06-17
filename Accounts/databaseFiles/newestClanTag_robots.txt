@@ -1,6 +1,6 @@
-#2RU0RVUQC=https://api-assets.clashofclans.com/badges/200/xotalE5RIlcZEqV-G6BNXtSKuTpsFcGgMtD9lu5uQQE.png
+#2RU0RVUQC=https://api-assets.clashofclans.com/badges/200/EE0IWonAbMjgkfYmWpvaFRFqCRm7KidbLOf1iOnV9VM.png
 #2J98VG2PC=https://api-assets.clashofclans.com/badges/200/i2IV7UXQr7HT9pAfFeuSNsHFivYdXkLNPLC8PKt-msc.png
-#2R8C2VYLP=https://api-assets.clashofclans.com/badges/200/ikX27bYZGZxMY8znbGmkzZSd89-6gJB1usih6pcCF-o.png
+#2RC2R9YC0=https://api-assets.clashofclans.com/badges/200/n3zovo_XLuXEcyHxkajYDfQ1vJskK3GhF7VKewVeNgc.png
 #2QRU8UJUQ=https://api-assets.clashofclans.com/badges/200/-UeY3cqaqD2btM7Z7Qd1Z8Va24ustYum44_43WNWf2w.png
 #2GURY80GP=https://api-assets.clashofclans.com/badges/200/EdyZUx2fNZwKPeeN0l6KAgvvYvd8cmKCWcRhjsa6rQk.png
 #2QC008PPR=https://api-assets.clashofclans.com/badges/200/-UeY3cqaqD2btM7Z7Qd1Z8Va24ustYum44_43WNWf2w.png

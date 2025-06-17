@@ -1,6 +1,10 @@
 # Byte-code / Compiled files
 # ---------------------------
 # Python cache directories
+ pictures/figures/focusPlayers/*
+ pictures/figures/myPlayers/*
+ pictures/figures/robots/*
+
 __pycache__/
 # Compiled Python files
 *.pyc
@@ -119,3 +123,34 @@ Desktop.ini # Windows
 # config/
 # If a specific data directory is only for local use and contains sensitive/large data
 # data/
+
+# Python specific files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Database files
+*.sqlite3
+db.sqlite3
+
+# Log files
+*.log
+
+# Environment variables
+.env
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
