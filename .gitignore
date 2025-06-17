@@ -1,0 +1,121 @@
+# Byte-code / Compiled files
+# ---------------------------
+# Python cache directories
+__pycache__/
+# Compiled Python files
+*.pyc
+*.pyd
+*.pyo
+# Optimized Python files (Python 2)
+*.opt-1.pyc
+*.opt-2.pyc
+# Python egg files
+*.egg
+*.egg-info/
+
+
+# Virtual Environments
+# --------------------
+# Common virtual environment names
+.venv/
+venv/
+env/
+envs/
+# Pip wheel cache
+pip-wheel-cache/
+# Virtualenv/conda build environments
+.tox/
+.conda/
+# Conda-specific files
+conda-meta/
+
+
+# IDE / Editor specific files
+# ---------------------------
+# PyCharm specific files
+.idea/
+*.iml
+# VS Code specific files (consider committing .vscode/settings.json or launch.json if shared config)
+.vscode/
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+# Vim
+*.swp
+*.swo
+*.swn
+*.bak
+*~
+# Emacs
+.#*
+# Eclipse PyDev
+.project
+.pydevproject
+.settings/
+.buildpath
+
+
+# Build / Distribution artifacts
+# ------------------------------
+# Python dist directory
+dist/
+# Python build directory
+build/
+# Setuptools/Distutils
+.Python
+# Wheels
+*.whl
+# Sphinx documentation build directory
+_build/
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+
+# Testing / Coverage
+# ------------------
+# Pytest cache
+.pytest_cache/
+# Coverage report files
+.coverage
+htmlcov/
+.coverage.*
+
+
+# Local data / Logs / Temporary files
+# -----------------------------------
+# Log files
+*.log
+# SQLite database files (for local development)
+*.sqlite3
+*.db
+# Flask/Django static files (if generated locally)
+static_root/
+staticfiles/
+# User uploaded media (e.g., Django)
+media/
+# Generic temporary directories/files
+tmp/
+temp/
+# Jupyter Notebook-related files
+.jupyter_history
+.DS_Store # macOS specific
+
+
+# OS-specific files
+# -----------------
+.DS_Store # macOS
+Thumbs.db # Windows
+ehthumbs.db # Windows
+Desktop.ini # Windows
+
+
+# Sensitive data / Local configuration
+# ------------------------------------
+# Environment variables files
+.env
+.env.*
+# If you have specific local configuration files not meant for Git
+# my_local_config.py
+# config/
+# If a specific data directory is only for local use and contains sensitive/large data
+# data/
