@@ -24,8 +24,6 @@ class ShowPlayerTable:
         self.troopsBuilder = []
         self.achievements = []
 
-        print(players[0].achievements)
-
     def generateBasicModel(self) -> tuple[int, QStandardItemModel]:
         model = QStandardItemModel()
         self.tableView.setIconSize(QSize(24, 24))

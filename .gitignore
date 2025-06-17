@@ -4,6 +4,7 @@
  pictures/figures/focusPlayers/*
  pictures/figures/myPlayers/*
  pictures/figures/robots/*
+ pictures/clan/flags/*
 
 __pycache__/
 # Compiled Python files
