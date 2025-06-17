@@ -16,14 +16,12 @@ class LocalWarLog:
 def warLogToLocal(warLog: dict) -> LocalWarLog:
     localWarLog = LocalWarLog()
     clan = warLog['clan']
-    print(clan['tag'])
     opponent = warLog['opponent']
     print(opponent)
     clanUrl = clan['badgeUrls']['medium'].split('/')[-1]
     opponentUrl = opponent['badgeUrls']['medium'].split('/')[-1]
     endDateStr = warLog['endTime'].split('T')[0]
     date = datetime.datetime.strptime(endDateStr, '%Y%m%d').date()
-    print(date)
     values = [
         clan['name'], clan['tag'], clan['clanLevel'], clanUrl,
         opponent['name'], opponent['tag'], opponent['clanLevel'], opponentUrl,

@@ -1,10 +1,10 @@
 class Items:
     heroes = [
-        "Barbarian King", "Archer Queen", "Grand Warden", "Royal Champion"
+        "Barbarian King", "Archer Queen", "Minion Prince", "Grand Warden", "Royal Champion"
     ]
 
     heroesCN = [
-        "野蛮人之王", "弓箭女皇", "大守护者", "飞盾战神"
+        "野蛮人之王", "弓箭女皇", "亡灵王子", "大守护者", "飞盾战神"
     ]
 
     roleDict = {
@@ -18,11 +18,11 @@ class Items:
         "Barbarian", "Archer", "Goblin", "Giant", "Wall Breaker",
         "Balloon", "Wizard", "Healer", "Dragon", "P.E.K.K.A",
         "Baby Dragon", "Miner", "Electro Dragon", "Yeti", "Dragon Rider",
-        "Electro Titan", "Root Rider",
+        "Electro Titan", "Root Rider", "Thrower",
         "Minion", "Hog Rider", "Valkyrie", "Golem", "Witch", "Lava Hound",
         "Bowler", "Ice Golem", "Headhunter", "Apprentice Warden", "Druid",
         "Wall Wrecker", "Battle Blimp", "Stone Slammer", "Siege Barracks",
-        "Log Launcher", "Flame Flinger", "Battle Drill"
+        "Log Launcher", "Flame Flinger", "Battle Drill", "Troop Launcher"
     ]
 
     spells = [
@@ -40,8 +40,9 @@ class Items:
     equipments= [
         ["Barbarian Puppet", "Rage Vial", "Earthquake Boots", "Vampstache", "Giant Gauntlet", "Spiky Ball"],
         ["Archer Puppet", "Invisibility Vial", "Giant Arrow", "Healer Puppet", "Frozen Arrow", "Magic Mirror"],
-        ["Eternal Tome", "Life Gem", "Rage Gem", "Healing Tome", "Fireball"],
-        ["Seeking Shield", "Royal Gem", "Hog Rider Puppet", "Haste Vial", "Rocket Spear"]
+        ["Henchmen Puppet", "Dark Orb"],
+        ["Eternal Tome", "Life Gem", "Rage Gem", "Healing Tome", "Fireball", "Lavaloon Puppet"],
+        ["Seeking Shield", "Royal Gem", "Hog Rider Puppet", "Haste Vial", "Rocket Spear", "Electro Boots"]
     ]
 
     equipments1d= [i for item in equipments for i in item]
@@ -203,3 +204,4 @@ class Items:
         'Un-Build It': '建筑大本',
         'Aggressive Capitalism': '都城突袭',
     }
+

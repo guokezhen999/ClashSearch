@@ -1,5 +1,7 @@
-#2GYCCL8U9=https://api-assets.clashofclans.com/badges/200/-mz69f_i3pJODu32HOvMOpuoWJZmAKpY6qOVtr_DgI0.png
-#2GURY80GP=https://api-assets.clashofclans.com/badges/200/0w6fMYqqsc-zyHnY0FUzpK-aI-e_73838HydHYLNkME.png
-#2QPYRRGPY=https://api-assets.clashofclans.com/badges/200/GZMhGXV3ZmzN22rPp4XRadHeP-qbdErwNhaNCJtG56U.png
-#2RRCUVQQ9=https://api-assets.clashofclans.com/badges/200/P1omVIG2_yBCbz-HLQ7TcupfvD1GGxbBpiQ-OT4C6Fk.png
-#2J29JJC20=https://api-assets.clashofclans.com/badges/200/C0BSnFQWz8i-YZ8fQhA_8RKodLmDMY23WJIY4LYwFyI.png
+#2GUGRRLR0=https://api-assets.clashofclans.com/badges/200/ISyB5wAm2v7B_rm-LJS360ga-83IFL8MABcjxft1RkA.png
+#Q2JV2JRL=https://api-assets.clashofclans.com/badges/200/sFPsc7nQPiS-fJ1njuQ3Hmb7vO504BdCSCioIdcKWkY.png
+#2J29JJC20=https://api-assets.clashofclans.com/badges/200/m2t7lTI3k3kjZIzGecxAoot3S04PINx7mwzZmXmBkGM.png
+#2QPYRRGPY=https://api-assets.clashofclans.com/badges/200/GCzugz50vbZluDXaMslghQ-K_NcAq_xvl3AqUmYKjT8.png
+#2J98VG2PC=https://api-assets.clashofclans.com/badges/200/i2IV7UXQr7HT9pAfFeuSNsHFivYdXkLNPLC8PKt-msc.png
+#2RU0RVUQC=https://api-assets.clashofclans.com/badges/200/xotalE5RIlcZEqV-G6BNXtSKuTpsFcGgMtD9lu5uQQE.png
+#C0VUUJLG=https://api-assets.clashofclans.com/badges/200/yzEGPFP5T5XQ_GNFE993EMjGEJHFgE0lYrkNvWkGnrw.png

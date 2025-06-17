@@ -1,2 +1,3 @@
-#2LY0VGP98=https://api-assets.clashofclans.com/badges/200/WnhVwfMZuY6siCdrBYzN4xbWHdxdKHkjMIZVwNchW_8.png
-#2GYCCL8U9=https://api-assets.clashofclans.com/badges/200/-mz69f_i3pJODu32HOvMOpuoWJZmAKpY6qOVtr_DgI0.png
+#2GYCCL8U9=https://api-assets.clashofclans.com/badges/200/qCT4JLfWIiM7wSLD7aJgiZArvGNSEmTbFoDp9QG4uXY.png
+#CL88JYYJ=https://api-assets.clashofclans.com/badges/200/2tluet-As0dfudeH539ohypeKkpyJ60nwmyPAK0-DmY.png
+#2GUGRRLR0=https://api-assets.clashofclans.com/badges/200/ISyB5wAm2v7B_rm-LJS360ga-83IFL8MABcjxft1RkA.png

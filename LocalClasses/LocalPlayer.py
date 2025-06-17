@@ -184,7 +184,6 @@ def playerToLocal(player: coc.Player) -> LocalPlayer:
     keys = list(Items.playerAchievementsDict.keys())
     for i, value in enumerate(achievementValues):
         localPlayer.setAchievement(keys[i], value)
-    print(localPlayer.achievements, localPlayer.pets)
     return localPlayer
 
 def playersToLocal(players: list[coc.Player]) -> list[LocalPlayer]:

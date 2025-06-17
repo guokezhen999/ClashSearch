@@ -110,7 +110,7 @@ class ShowLocalPlayerForm(Ui_ShowPlayerForm, QDialog):
         else:
             heroButtons = [QToolButton(parent=self.groupBoxHeroes) for i in range(len(heroes))]
             for i in range(len(heroes)):
-                heroButtons[i].setMaximumSize(45, 30)
+                heroButtons[i].setMaximumSize(50, 30)
                 heroButtons[i].setToolButtonStyle(Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
                 heroButtons[i].setIconSize(QSize(20, 20))
                 heroButtons[i].setIcon(QIcon(QPixmap(f"pictures/army/heroes/hero-{i}.png")))

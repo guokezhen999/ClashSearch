@@ -122,6 +122,6 @@ async def warLeagueTest():
 
 
 if __name__ == "__main__":
-    asyncio.run(main_2())
+    asyncio.run(main_1())
 
 # _init_logs : list[dict]

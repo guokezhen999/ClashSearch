@@ -400,7 +400,6 @@ class ClashDatabase(DatabaseInfo):
                 infoSql += f"{info.lower().replace(' ', '_')} = %s, "
         infoSql = infoSql[:-2]
         sql = f"UPDATE {self.clans} SET {infoSql} WHERE tag = %s"
-        print(sql)
         urls = {}
         for clan in clans:
             urls[clan.tag] = clan.badge.url
@@ -430,7 +429,6 @@ class ClashDatabase(DatabaseInfo):
             infoSql += f"{info.lower().replace(' ', '_')}, "
         infoSql = infoSql[:-2]
         sql = f"SELECT {infoSql} FROM {self.clans} ORDER BY id ASC"
-        print(sql)
         self.cursor.execute(sql)
         results = self.cursor.fetchall()
         clans = []
@@ -490,7 +488,6 @@ class ClashDatabase(DatabaseInfo):
             name = name.replace(' ', '_').replace('.', '').lower()
             sql += f" {name} SMALLINT UNSIGNED, "
         sql = sql[:-2] + ")"
-        print(sql)
         self.cursor.execute(sql)
         self.connection.commit()
 
@@ -566,12 +563,10 @@ class ClashDatabase(DatabaseInfo):
         valueSql = valueSql[:-2]
         valueSql += ")"
         sql = f"INSERT INTO {table} {itemSql} {valueSql} ON DUPLICATE KEY UPDATE {dupliacateSql}"
-        print(sql)
         for player in players:
             values = []
             for name in infos:
                 values.append(player.getInfo(name))
-            print(values)
             self.cursor.execute(sql, values)
         self.connection.commit()
 
@@ -599,7 +594,6 @@ class ClashDatabase(DatabaseInfo):
                 tables.append(table)
                 dates.append(currentDate)
         infos = [info.lower().replace('.', '').replace(' ', '_') for info in infos]
-        print(infos)
         infoSql = ""
         for info in infos:
             infoSql += f"{info}, "
