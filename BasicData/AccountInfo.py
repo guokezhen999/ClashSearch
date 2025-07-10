@@ -1,19 +1,24 @@
+import os
+
 from BasicData import *
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # clash of clans 账号
 class ClashAccountInfo:
     def __init__(self):
-        self.email = "guokezhen999@gmail.com"
-        self.password = "juju200207"
+        self.email = os.environ['EMAIL']
+        self.password = os.environ['PASSWORD']
 
 # 数据库信息
 class DatabaseInfo:
     def __init__(self):
-        self.host = "127.0.0.1"
-        self.port = 3306
-        self.username = "root"
-        self.password = "juju200207"
-        self.database = "clashofclans_qt"
+        self.host = os.environ['DB_HOST']
+        self.port = os.environ['DB_PORT']
+        self.username = os.environ['DB_USERNAME']
+        self.password = os.environ['DB_PASSWORD']
+        self.database = os.environ['DB_NAME']
         self.charset = "utf8mb4"
 
         self.myPlayers = "my_players"

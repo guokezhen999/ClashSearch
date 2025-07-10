@@ -6,6 +6,9 @@
  pictures/figures/robots/*
  pictures/clan/flags/*
 
+ tips.txt
+ replacements.txt
+
 __pycache__/
 # Compiled Python files
 *.pyc
